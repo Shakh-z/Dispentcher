@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Диспетчер задач Windows — 3D Интерактивная Презентация</title>
+    <meta name="description" content="Красивая 3D презентация о Диспетчере задач Windows: история, функции, вкладки, советы и глубокий разбор.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+</head>
+<body>
+    <!-- 3D Canvas Background -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Particles Overlay -->
+    <div id="particles-overlay"></div>
+
+    <!-- Navigation -->
+    <nav id="main-nav">
+        <div class="nav-logo">
+            <div class="logo-icon">⚡</div>
+            <span>TaskManager 3D</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#hero" class="nav-link active">Главная</a></li>
+            <li><a href="#history" class="nav-link">История</a></li>
+            <li><a href="#features" class="nav-link">Функции</a></li>
+            <li><a href="#tabs" class="nav-link">Вкладки</a></li>
+            <li><a href="#howto" class="nav-link">Как открыть</a></li>
+            <li><a href="#tips" class="nav-link">Советы</a></li>
+            <li><a href="#deep" class="nav-link">Глубокий разбор</a></li>
+            <li><a href="#future" class="nav-link">Будущее</a></li>
+        </ul>
+        <button id="menu-toggle" aria-label="Меню">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="section hero-section">
+        <div class="hero-content">
+            <div class="glitch-wrapper">
+                <h1 class="hero-title glitch" data-text="ДИСПЕТЧЕР ЗАДАЧ">ДИСПЕТЧЕР ЗАДАЧ</h1>
+            </div>
+            <p class="hero-subtitle">Интерактивная 3D-презентация системного монитора Windows</p>
+            <p class="hero-desc">
+                Погрузитесь в мир процессов, потоков и ресурсов. Узнайте всё о самом мощном инструменте 
+                мониторинга и управления системой — от Windows 3.0 до Windows 11. 
+                Плавающие 3D-элементы, динамическое освещение и детальный разбор каждой вкладки.
+            </p>
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <div class="stat-value" data-target="7">0</div>
+                    <div class="stat-label">Вкладок</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" data-target="30">0</div>
+                    <div class="stat-label">Лет истории</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" data-target="100">0</div>
+                    <div class="stat-label">% Контроля</div>
+                </div>
+            </div>
+            <a href="#history" class="cta-button">
+                <span>Начать путешествие</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </a>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse"></div>
+            <span>Прокрутите вниз</span>
+        </div>
+    </section>
+
+    <!-- History Section -->
+    <section id="history" class="section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2 class="section-title">История Диспетчера задач</h2>
+                <p class="section-subtitle">От простого списка окон до мощного системного монитора</p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">Windows 3.0 / 3.1</div>
+                        <h3>Рождение Task List</h3>
+                        <p>
+                            В ранних версиях Windows существовал «Список задач» (Task List). Он открывался 
+                            комбинацией Ctrl+Esc или двойным щелчком по рабочему столу. Пользователь мог 
+                            видеть открытые окна, переключаться между ними, закрывать приложения и упорядочивать 
+                            окна каскадом. Это был единственный способ увидеть все запущенные программы одновременно, 
+                            поскольку Alt+Tab работал последовательно и не показывал иконки.
+                        </p>
+                        <p>
+                            Диспетчер программ (Program Manager) позволял запускать приложения, но не переключаться 
+                            между ними. Task List заполнял этот пробел и стал основой будущего Диспетчера задач.
+                        </p>
+                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80" alt="Ранние компьютеры" class="content-img" loading="lazy">
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">Windows 95 / NT 4.0</div>
+                        <h3>Появление современного вида</h3>
+                        <p>
+                            С выходом Windows 95 и особенно Windows NT 4.0 Диспетчер задач обрёл привычный 
+                            современный интерфейс. Появилась возможность просматривать процессы, а не только 
+                            приложения. Пользователи могли завершать процессы, менять приоритеты и видеть 
+                            базовую информацию о загрузке системы.
+                        </p>
+                        <p>
+                            Панель задач Windows 95 сделала переключение между окнами намного удобнее, 
+                            и роль Диспетчера задач сместилась в сторону диагностики и управления 
+                            «зависшими» программами. Ctrl+Shift+Esc уже тогда стал стандартной горячей клавишей.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">Windows Vista / 7</div>
+                        <h3>Расширение возможностей</h3>
+                        <p>
+                            В Windows Vista и Windows 7 Диспетчер задач получил вкладку «Службы», 
+                            улучшенный мониторинг сети, возможность просмотра пользователей и более 
+                            детальную информацию о процессах. Появилась кнопка «Открыть монитор ресурсов», 
+                            которая запускала Resource Monitor — ещё более мощный инструмент.
+                        </p>
+                        <p>
+                            Теперь можно было видеть не только использование CPU и памяти, но и 
+                            сетевую активность, дисковый ввод-вывод и управлять службами Windows 
+                            прямо из Диспетчера задач.
+                        </p>
+                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80" alt="Технологии Windows" class="content-img" loading="lazy">
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">Windows 8 / 8.1</div>
+                        <h3>Полная переработка интерфейса</h3>
+                        <p>
+                            Windows 8 принесла революционные изменения. Microsoft полностью 
+                            переработала Диспетчер задач, основываясь на телеметрии использования. 
+                            Интерфейс стал чище, появилась группировка процессов на «Приложения», 
+                            «Фоновые процессы» и «Процессы Windows». Добавились тепловые карты 
+                            использования ресурсов и упрощённый вид по умолчанию.
+                        </p>
+                        <p>
+                            Цель была ясна: сделать самый частый сценарий (найти и закрыть зависшее 
+                            приложение) максимально быстрым, а при необходимости — предоставить 
+                            глубокую информацию для продвинутых пользователей.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">Windows 10 / 11</div>
+                        <h3>Современный монитор системы</h3>
+                        <p>
+                            В Windows 10 и 11 Диспетчер задач стал ещё мощнее. Появилась вкладка 
+                            «Автозагрузка» с оценкой влияния на время загрузки, поддержка GPU 
+                            (включая выделенную и общую память), история приложений для UWP, 
+                            тёмная тема, интеграция с Microsoft Edge и многое другое.
+                        </p>
+                        <p>
+                            В Windows 11 интерфейс получил боковую навигацию вместо классических 
+                            вкладок, улучшенную поддержку тёмной темы и более точные метрики 
+                            производительности. Теперь можно видеть температуру GPU, частоту 
+                            процессора в реальном времени и детальную статистику по каждому ядру.
+                        </p>
+                        <img src="https://images.unsplash.com/photo-1629654291663-b91ad427698f?w=800&q=80" alt="Современный интерфейс" class="content-img" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section features-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2 class="section-title">Ключевые возможности</h2>
+                <p class="section-subtitle">Почему Диспетчер задач — незаменимый инструмент</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card" data-tilt>
+                    <div class="feature-icon">📊</div>
+                    <h3>Мониторинг ресурсов</h3>
+                    <p>
+                        В реальном времени отслеживайте загрузку процессора (по ядрам), 
+                        оперативной памяти, дисков, сети и графического процессора. 
+                        Графики показывают историю за последние 60 секунд, а также 
+                        детальную информацию: частоту CPU, объём выделенной памяти GPU, 
+                        скорость чтения/записи диска и пропускную способность сети.
+                    </p>
+                    <ul class="feature-list">
+                        <li>CPU — загрузка, частота, температура</li>
+                        <li>Память — используемая, доступная, кэш</li>
+                        <li>Диск — активность, скорость, очередь</li>
+                        <li>Сеть — отправлено/получено, адаптеры</li>
+                        <li>GPU — 3D, копирование, кодирование</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card" data-tilt>
+                    <div class="feature-icon">🛑</div>
+                    <h3>Управление процессами</h3>
+                    <p>
+                        Завершайте зависшие приложения одним кликом, меняйте приоритет 
+                        процессов, устанавливайте соответствие процессорам (affinity), 
+                        создавайте дампы памяти для отладки и анализируйте дерево процессов. 
+                        Правый клик открывает мощное контекстное меню с десятками действий.
+                    </p>
+                    <ul class="feature-list">
+                        <li>Снять задачу / Завершить процесс</li>
+                        <li>Изменить приоритет (от Низкого до Реального времени)</li>
+                        <li>Задать соответствие (affinity) ядрам</li>
+                        <li>Создать файл дампа</li>
+                        <li>Открыть расположение файла</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card" data-tilt>
+                    <div class="feature-icon">🚀</div>
+                    <h3>Управление автозагрузкой</h3>
+                    <p>
+                        Контролируйте, какие программы запускаются вместе с Windows. 
+                        Диспетчер задач показывает влияние каждого элемента на время 
+                        загрузки системы (Высокое, Среднее, Низкое, Нет) и позволяет 
+                        быстро отключать ненужные программы, ускоряя старт компьютера.
+                    </p>
+                    <ul class="feature-list">
+                        <li>Оценка влияния на загрузку</li>
+                        <li>Включение / отключение одним кликом</li>
+                        <li>Поиск издателя и расположения</li>
+                        <li>Сортировка по влиянию и имени</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card" data-tilt>
+                    <div class="feature-icon">⚙️</div>
+                    <h3>Службы и пользователи</h3>
+                    <p>
+                        Просматривайте и управляйте службами Windows: запускайте, 
+                        останавливайте, перезапускайте. На вкладке «Пользователи» 
+                        видно, кто вошёл в систему, сколько ресурсов потребляет 
+                        каждая сессия, и можно отключать пользователей удалённо.
+                    </p>
+                    <ul class="feature-list">
+                        <li>Запуск / остановка / перезапуск служб</li>
+                        <li>Открыть оснастку «Службы»</li>
+                        <li>Просмотр сеансов пользователей</li>
+                        <li>Завершение сеанса или отключение</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card" data-tilt>
+                    <div class="feature-icon">📈</div>
+                    <h3>История приложений</h3>
+                    <p>
+                        Для приложений из Microsoft Store (UWP) Диспетчер задач 
+                        собирает статистику использования CPU и сети за последние 
+                        30 дней. Это помогает понять, какие приложения больше всего 
+                        нагружают систему в фоне или потребляют мобильный трафик.
+                    </p>
+                    <ul class="feature-list">
+                        <li>Время ЦП за период</li>
+                        <li>Сетевой трафик (всего, лимитный)</li>
+                        <li>Уведомления</li>
+                        <li>Сброс истории</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card" data-tilt>
+                    <div class="feature-icon">🔍</div>
+                    <h3>Детальный анализ</h3>
+                    <p>
+                        Вкладка «Подробности» — это профессиональный инструмент. 
+                        Здесь отображаются PID, путь к исполняемому файлу, 
+                        командная строка, архитектура (x86/x64/ARM64), 
+                        использование handles, threads и многое другое. 
+                        Идеально для диагностики сложных проблем.
+                    </p>
+                    <ul class="feature-list">
+                        <li>PID, Command line, Path</li>
+                        <li>Архитектура процесса</li>
+                        <li>Handles, Threads, GDI objects</li>
+                        <li>Виртуализация UAC</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tabs Deep Dive -->
+    <section id="tabs" class="section tabs-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2 class="section-title">Вкладки Диспетчера задач</h2>
+                <p class="section-subtitle">Подробный разбор каждой вкладки</p>
+            </div>
+
+            <div class="tabs-nav">
+                <button class="tab-btn active" data-tab="processes">Процессы</button>
+                <button class="tab-btn" data-tab="performance">Производительность</button>
+                <button class="tab-btn" data-tab="app-history">История приложений</button>
+                <button class="tab-btn" data-tab="startup">Автозагрузка</button>
+                <button class="tab-btn" data-tab="users">Пользователи</button>
+                <button class="tab-btn" data-tab="details">Подробности</button>
+                <button class="tab-btn" data-tab="services">Службы</button>
+            </div>
+
+            <div class="tabs-content">
+                <div class="tab-panel active" id="panel-processes">
+                    <div class="tab-grid">
+                        <div class="tab-text">
+                            <h3>Вкладка «Процессы»</h3>
+                            <p>
+                                Это главная и самая используемая вкладка. Здесь отображаются все 
+                                запущенные приложения, фоновые процессы и процессы Windows. 
+                                Процессы сгруппированы по категориям, что сильно упрощает навигацию.
+                            </p>
+                            <p>
+                                <strong>Приложения</strong> — программы с видимыми окнами. 
+                                <strong>Фоновые процессы</strong> — утилиты, треи, агенты обновлений. 
+                                <strong>Процессы Windows</strong> — критические системные компоненты 
+                                (csrss.exe, winlogon.exe, services.exe и т.д.). Завершать последние 
+                                нужно с большой осторожностью.
+                            </p>
+                            <p>
+                                Колонки показывают использование ЦП, памяти, диска, сети и GPU. 
+                                Цветовая индикация (тепловая карта) помогает мгновенно заметить, 
+                                кто сильнее всего нагружает систему. Можно добавлять и убирать 
+                                колонки через правый клик по заголовку.
+                            </p>
+                            <p>
+                                Полезные действия: «Снять задачу», «Перейти к подробностям», 
+                                «Открыть расположение файла», «Поиск в Интернете», «Свойства».
+                            </p>
+                        </div>
+                        <div class="tab-visual">
+                            <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=700&q=80" alt="Процессы" loading="lazy">
+                            <div class="floating-badge">CPU • RAM • Disk • Network • GPU</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-panel" id="panel-performance">
+                    <div class="tab-grid">
+                        <div class="tab-text">
+                            <h3>Вкладка «Производительность»</h3>
+                            <p>
+                                Здесь собраны живые графики всех ключевых подсистем компьютера. 
+                                Слева — список: ЦП, Память, Диск 0, Диск 1…, Ethernet / Wi-Fi, GPU 0…
+                            </p>
+                            <p>
+                                <strong>ЦП</strong>: общая загрузка, график по времени, частота 
+                                (базовая и текущая), количество ядер и логических процессоров, 
+                                время работы системы (uptime), процессы / потоки / дескрипторы.
+                            </p>
+                            <p>
+                                <strong>Память</strong>: используемая / доступная / зафиксированная, 
+                                кэшированная, выгружаемый и невыгружаемый пул, скорость памяти, 
+                                количество слотов.
+                            </p>
+                            <p>
+                                <strong>Диск</strong>: активное время, средняя скорость ответа, 
+                                скорость чтения и записи.
+                            </p>
+                            <p>
+                                <strong>GPU</strong>: загрузка 3D-движка, копирования, кодирования 
+                                и декодирования видео, выделенная и общая память, температура 
+                                (в поддерживаемых драйверах).
+                            </p>
+                        </div>
+                        <div class="tab-visual">
+                            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=700&q=80" alt="Производительность" loading="lazy">
+                            <div class="floating-badge">Real-time Graphs</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-panel" id="panel-app-history">
+                    <div class="tab-grid">
+                        <div class="tab-text">
+                            <h3>Вкладка «История приложений»</h3>
+                            <p>
+                                Эта вкладка показывает, сколько ресурсов потребили приложения 
+                                Microsoft Store (UWP) с определённой даты. По умолчанию — 
+                                последние 30 дней.
+                            </p>
+                            <p>
+                                Колонки: Время ЦП, Сеть, Лимітная сеть, Обновления плиток, 
+                                Уведомления. Можно включить отображение истории для всех 
+                                учётных записей (требуются права администратора).
+                            </p>
+                            <p>
+                                Полезно, когда нужно понять, какое приложение «съело» 
+                                мобильный трафик или постоянно работало в фоне, потребляя 
+                                батарею и процессорное время.
+                            </p>
+                            <p>
+                                Кнопка «Удалить журнал использования» сбрасывает счётчики.
+                            </p>
+                        </div>
+                        <div class="tab-visual">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700&q=80" alt="История" loading="lazy">
+                            <div class="floating-badge">30 дней статистики</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-panel" id="panel-startup">
+                    <div class="tab-grid">
+                        <div class="tab-text">
+                            <h3>Вкладка «Автозагрузка»</h3>
+                            <p>
+                                Одна из самых полезных вкладок для ускорения работы компьютера. 
+                                Здесь перечислены все программы, которые запускаются автоматически 
+                                при входе пользователя в систему.
+                            </p>
+                            <p>
+                                Столбец «Влияние на запуск» показывает, насколько программа 
+                                замедляет загрузку: Высокое, Среднее, Низкое или Не измерено. 
+                                Windows собирает эту статистику на основе реальных измерений.
+                            </p>
+                            <p>
+                                Отключение ненужных программ (мессенджеры, облачные клиенты, 
+                                утилиты обновления) может сократить время от включения 
+                                до рабочего стола на десятки секунд.
+                            </p>
+                            <p>
+                                Правый клик → «Открыть расположение файла» или «Поиск 
+                                в Интернете» помогает понять, что это за программа.
+                            </p>
+                        </div>
+                        <div class="tab-visual">
+                            <img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=700&q=80" alt="Автозагрузка" loading="lazy">
+                            <div class="floating-badge">Ускорь загрузку</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-panel" id="panel-users">
+                    <div class="tab-grid">
+                        <div class="tab-text">
+                            <h3>Вкладка «Пользователи»</h3>
+                            <p>
+                                Показывает всех пользователей, вошедших в систему (включая 
+                                удалённые сеансы RDP). Для каждого пользователя видно 
+                                суммарное потребление ресурсов его процессами.
+                            </p>
+                            <p>
+                                Можно развернуть пользователя и увидеть список его процессов. 
+                                Администратор может завершить сеанс другого пользователя 
+                                или отключить его.
+                            </p>
+                            <p>
+                                Полезно на общих компьютерах, терминальных серверах и 
+                                при удалённой поддержке.
+                            </p>
+                        </div>
+                        <div class="tab-visual">
+                            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=700&q=80" alt="Пользователи" loading="lazy">
+                            <div class="floating-badge">Сеансы & RDP</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-panel" id="panel-details">
+                    <div class="tab-grid">
+                        <div class="tab-text">
+                            <h3>Вкладка «Подробности»</h3>
+                            <p>
+                                Это «профессиональный» режим. Здесь отображаются все процессы 
+                                без группировки, с возможностью добавить десятки колонок: 
+                                PID, Имя пользователя, Сеанс, Идентификатор сеанса, 
+                                Использование ЦП, Память (рабочий набор, пик, частный), 
+                                Состояние, Имя пользователя, Платформа, Описание, 
+                                Командная строка и многие другие.
+                            </p>
+                            <p>
+                                Правый клик позволяет: завершить процесс / дерево процессов, 
+                                задать приоритет, задать соответствие, проанализировать цепочку ожидания, 
+                                создать файл дампа, открыть свойства файла и многое другое.
+                            </p>
+                            <p>
+                                Именно здесь удобно искать процессы по PID, который часто 
+                                фигурирует в логах и сообщениях об ошибках.
+                            </p>
+                        </div>
+                        <div class="tab-visual">
+                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=700&q=80" alt="Подробности" loading="lazy">
+                            <div class="floating-badge">PID • Threads • Handles</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-panel" id="panel-services">
+                    <div class="tab-grid">
+                        <div class="tab-text">
+                            <h3>Вкладка «Службы»</h3>
+                            <p>
+                                Список всех служб Windows — как запущенных, так и остановленных. 
+                                Можно запускать, останавливать и перезапускать службы прямо отсюда.
+                            </p>
+                            <p>
+                                Кнопка «Открыть службы» запускает полноценную оснастку 
+                                services.msc, где доступны дополнительные настройки: 
+                                тип запуска, восстановление, зависимости, вход в систему.
+                            </p>
+                            <p>
+                                Полезно, когда нужно быстро перезапустить службу печати, 
+                                Windows Update, или диагностировать проблемы с сетью.
+                            </p>
+                        </div>
+                        <div class="tab-visual">
+                            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=700&q=80" alt="Службы" loading="lazy">
+                            <div class="floating-badge">services.msc</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to open -->
+    <section id="howto" class="section howto-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <h2 class="section-title">Как открыть Диспетчер задач</h2>
+                <p class="section-subtitle">Все способы запуска</p>
+            </div>
+
+            <div class="howto-grid">
+                <div class="howto-card">
+                    <div class="howto-number">01</div>
+                    <h3>Горячие клавиши</h3>
+                    <div class="key-combo">
+                        <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Esc</kbd>
+                    </div>
+                    <p>
+                        Самый быстрый и удобный способ. Работает в любой версии Windows 
+                        начиная с NT. Открывает Диспетчер задач мгновенно, даже если 
+                        система сильно загружена.
+                    </p>
+                </div>
+
+                <div class="howto-card">
+                    <div class="howto-number">02</div>
+                    <h3>Классическая комбинация</h3>
+                    <div class="key-combo">
+                        <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Del</kbd>
+                    </div>
+                    <p>
+                        Открывает экран безопасности Windows. Выберите пункт 
+                        «Диспетчер задач». Полезно, когда система почти не отвечает 
+                        и обычные способы не работают.
+                    </p>
+                </div>
+
+                <div class="howto-card">
+                    <div class="howto-number">03</div>
+                    <h3>Через панель задач</h3>
+                    <div class="key-combo">
+                        <span class="right-click">ПКМ</span> по панели задач
+                    </div>
+                    <p>
+                        Щёлкните правой кнопкой мыши по пустому месту на панели задач 
+                        и выберите «Диспетчер задач». В Windows 11 этот пункт 
+                        иногда скрыт, но всё ещё доступен.
+                    </p>
+                </div>
+
+                <div class="howto-card">
+                    <div class="howto-number">04</div>
+                    <h3>Через поиск</h3>
+                    <div class="key-combo">
+                        <kbd>Win</kbd> + введите «Диспетчер»
+                    </div>
+                    <p>
+                        Нажмите клавишу Windows и начните печатать «Диспетчер задач» 
+                        или «Task Manager». Система найдёт приложение мгновенно.
+                    </p>
+                </div>
+
+                <div class="howto-card">
+                    <div class="howto-number">05</div>
+                    <h3>Через Выполнить</h3>
+                    <div class="key-combo">
+                        <kbd>Win</kbd> + <kbd>R</kbd> → taskmgr
+                    </div>
+                    <p>
+                        Откройте диалог «Выполнить» и введите <code>taskmgr</code> 
+                        или <code>taskmgr.exe</code>. Нажмите Enter. Работает всегда.
+                    </p>
+                </div>
+
+                <div class="howto-card">
+                    <div class="howto-number">06</div>
+                    <h3>Через командную строку</h3>
+                    <div class="key-combo">
+                        <code>taskmgr</code>
+                    </div>
+                    <p>
+                        В командной строке, PowerShell или Windows Terminal просто 
+                        введите <code>taskmgr</code> и нажмите Enter.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tips Section -->
+    <section id="tips" class="section tips-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-number">05</span>
+                <h2 class="section-title">Полезные советы и трюки</h2>
+                <p class="section-subtitle">Станьте мастером Диспетчера задач</p>
+            </div>
+
+            <div class="tips-list">
+                <div class="tip-item">
+                    <div class="tip-icon">💡</div>
+                    <div class="tip-content">
+                        <h3>Всегда смотрите на «Дерево процессов»</h3>
+                        <p>
+                            На вкладке «Подробности» можно увидеть родительско-дочерние 
+                            отношения. Иногда «лишний» процесс — это дочерний процесс 
+                            браузера или антивируса. Завершение родителя может закрыть 
+                            сразу несколько связанных процессов.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="tip-item">
+                    <div class="tip-icon">⚡</div>
+                    <div class="tip-content">
+                        <h3>Используйте «Анализ цепочки ожидания»</h3>
+                        <p>
+                            Если процесс «Не отвечает», щёлкните правой кнопкой → 
+                            «Анализ цепочки ожидания». Windows покажет, какой именно 
+                            процесс или поток блокирует работу. Иногда проблема не 
+                            в самом приложении, а в драйвере или службе.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="tip-item">
+                    <div class="tip-icon">🎯</div>
+                    <div class="tip-content">
+                        <h3>Меняйте приоритет осторожно</h3>
+                        <p>
+                            Приоритет «Реального времени» может сделать систему 
+                            нестабильной. Для большинства задач достаточно «Выше среднего» 
+                            или «Высокого». Никогда не ставьте системные процессы 
+                            в «Низкий» приоритет.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="tip-item">
+                    <div class="tip-icon">📉</div>
+                    <div class="tip-content">
+                        <h3>Отключайте автозагрузку регулярно</h3>
+                        <p>
+                            Каждые несколько месяцев проверяйте вкладку «Автозагрузка». 
+                            Новые программы часто добавляют себя туда без спроса. 
+                            Отключение 5–10 ненужных элементов может ускорить загрузку 
+                            на 15–40 секунд.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="tip-item">
+                    <div class="tip-icon">🖥️</div>
+                    <div class="tip-content">
+                        <h3>Мониторьте GPU при играх и монтаже</h3>
+                        <p>
+                            На вкладке «Производительность» → GPU видно, какой движок 
+                            нагружен: 3D, Copy, Video Encode, Video Decode. Это помогает 
+                            понять, почему тормозит монтаж или стрим — возможно, 
+                            узкое место в кодировании, а не в 3D.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="tip-item">
+                    <div class="tip-icon">🔒</div>
+                    <div class="tip-content">
+                        <h3>Создавайте дампы для отладки</h3>
+                        <p>
+                            Если программа постоянно падает, щёлкните правой кнопкой 
+                            по процессу → «Создать файл дампа». Полученный .dmp файл 
+                            можно открыть в WinDbg или отправить разработчикам. 
+                            Это золотой стандарт диагностики.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="tip-item">
+                    <div class="tip-icon">🌐</div>
+                    <div class="tip-content">
+                        <h3>Ищите неизвестные процессы в Интернете</h3>
+                        <p>
+                            Правый клик → «Поиск в Интернете» мгновенно открывает 
+                            браузер с запросом по имени процесса. Так можно быстро 
+                            понять, легитимный это системный файл или потенциальный malware.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="tip-item">
+                    <div class="tip-icon">⏱️</div>
+                    <div class="tip-content">
+                        <h3>Смотрите «Время ЦП» а не только %</h3>
+                        <p>
+                            Процент загрузки может быть обманчив. Процесс, который 
+                            постоянно использует 5–10% CPU в течение часов, может 
+                            быть более вредным, чем тот, что на секунду поднялся до 80%. 
+                            Добавьте колонку «Время ЦП» на вкладке «Подробности».
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deep Dive -->
+    <section id="deep" class="section deep-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-number">06</span>
+                <h2 class="section-title">Глубокий технический разбор</h2>
+                <p class="section-subtitle">Как работает Диспетчер задач изнутри</p>
+            </div>
+
+            <div class="deep-content">
+                <div class="deep-block">
+                    <h3>Архитектура и источники данных</h3>
+                    <p>
+                        Диспетчер задач (taskmgr.exe) получает данные из нескольких источников:
+                    </p>
+                    <ul>
+                        <li><strong>Performance Data Helper (PDH)</strong> — счётчики производительности Windows</li>
+                        <li><strong>Toolhelp API</strong> (CreateToolhelp32Snapshot) — список процессов и модулей</li>
+                        <li><strong>WMI</strong> (Windows Management Instrumentation) — дополнительная информация</li>
+                        <li><strong>NtQuerySystemInformation</strong> — низкоуровневые данные ядра</li>
+                        <li><strong>ETW</strong> (Event Tracing for Windows) — события и трассировка</li>
+                    </ul>
+                    <p>
+                        Для отображения использования GPU в современных версиях используется 
+                        DirectX и драйверы WDDM. Температура GPU доступна через расширенные 
+                        интерфейсы производителей (NVIDIA NVAPI, AMD ADL и т.д.).
+                    </p>
+                </div>
+
+                <div class="deep-block">
+                    <h3>Почему некоторые процессы нельзя завершить</h3>
+                    <p>
+                        Критические системные процессы (smss.exe, csrss.exe, wininit.exe, 
+                        services.exe, lsass.exe) защищены ядром. Попытка их завершить 
+                        приводит к синему экрану (BSOD) или просто игнорируется. 
+                        Windows использует механизм Protected Process Light (PPL) 
+                        и другие защиты.
+                    </p>
+                    <p>
+                        Даже с правами администратора и SeDebugPrivilege некоторые 
+                        процессы (особенно антивирусы и защитники) имеют дополнительную 
+                        защиту на уровне ядра.
+                    </p>
+                </div>
+
+                <div class="deep-block">
+                    <h3>Разница между «Снять задачу» и «Завершить процесс»</h3>
+                    <p>
+                        «Снять задачу» на вкладке «Процессы» сначала пытается 
+                        корректно закрыть окно (отправляет WM_CLOSE), давая программе 
+                        шанс сохранить данные. Если это не помогает — принудительно 
+                        завершает процесс.
+                    </p>
+                    <p>
+                        «Завершить процесс» / «Завершить дерево процессов» на вкладке 
+                        «Подробности» сразу вызывает TerminateProcess — жёсткое 
+                        завершение без возможности сохранения.
+                    </p>
+                </div>
+
+                <div class="deep-block">
+                    <h3>Affinity и приоритеты</h3>
+                    <p>
+                        <strong>Приоритет</strong> влияет на то, как часто планировщик 
+                        Windows выделяет процессу кванты времени CPU. Уровни: 
+                        Idle, Below Normal, Normal, Above Normal, High, Realtime.
+                    </p>
+                    <p>
+                        <strong>Affinity</strong> (соответствие) позволяет привязать 
+                        процесс к конкретным логическим процессорам. Это полезно 
+                        для старых однопоточных программ или для изоляции нагрузки.
+                    </p>
+                </div>
+
+                <div class="deep-block">
+                    <h3>Альтернативы Диспетчеру задач</h3>
+                    <p>
+                        Хотя встроенный Диспетчер задач отлично справляется с большинством 
+                        задач, существуют более мощные инструменты:
+                    </p>
+                    <ul>
+                        <li><strong>Process Explorer</strong> (Sysinternals) — дерево процессов, handles, DLL, strings</li>
+                        <li><strong>Process Monitor</strong> — мониторинг файловой системы, реестра, сети в реальном времени</li>
+                        <li><strong>System Informer</strong> (бывший Process Hacker) — открытый и очень детальный</li>
+                        <li><strong>Resource Monitor</strong> — углублённый анализ CPU, памяти, диска и сети</li>
+                        <li><strong>Performance Monitor</strong> (perfmon) — сбор и анализ счётчиков производительности</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Future -->
+    <section id="future" class="section future-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-number">07</span>
+                <h2 class="section-title">Будущее Диспетчера задач</h2>
+                <p class="section-subtitle">Куда движется развитие</p>
+            </div>
+
+            <div class="future-grid">
+                <div class="future-card">
+                    <div class="future-icon">🤖</div>
+                    <h3>Интеграция с ИИ</h3>
+                    <p>
+                        В будущих версиях Windows можно ожидать интеллектуальных 
+                        рекомендаций: «Этот процесс потребляет слишком много 
+                        ресурсов в фоне — отключить автозагрузку?» или автоматическое 
+                        обнаружение аномалий с помощью машинного обучения.
+                    </p>
+                </div>
+                <div class="future-card">
+                    <div class="future-icon">📱</div>
+                    <h3>Единый центр управления</h3>
+                    <p>
+                        Microsoft постепенно объединяет Диспетчер задач, Параметры, 
+                        Центр безопасности и Монитор ресурсов в более целостную 
+                        экосистему управления системой.
+                    </p>
+                </div>
+                <div class="future-card">
+                    <div class="future-icon">🔋</div>
+                    <h3>Энергоэффективность</h3>
+                    <p>
+                        Всё больше внимания уделяется энергопотреблению. Уже сейчас 
+                        есть колонка «Потребление электроэнергии». В будущем метрики 
+                        станут ещё точнее, особенно для ноутбуков и ARM-устройств.
+                    </p>
+                </div>
+                <div class="future-card">
+                    <div class="future-icon">🛡️</div>
+                    <h3>Безопасность</h3>
+                    <p>
+                        Усиление защиты от malware, который пытается скрыть себя 
+                        от Диспетчера задач, и улучшенная интеграция с Microsoft Defender 
+                        и Smart App Control.
+                    </p>
+                </div>
+            </div>
+
+            <div class="final-cta">
+                <h2>Теперь вы знаете Диспетчер задач изнутри</h2>
+                <p>
+                    Используйте эти знания, чтобы держать систему под контролем, 
+                    быстро находить проблемы и выжимать максимум производительности.
+                </p>
+                <div class="final-keys">
+                    <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Esc</kbd>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span class="logo-icon">⚡</span>
+                <span>TaskManager 3D Presentation</span>
+            </div>
+            <p>Интерактивная 3D-презентация создана для образовательных целей.</p>
+            <p class="footer-note">Загрузите код на GitHub и делитесь знаниями.</p>
+            <div class="footer-tech">
+                <span>Three.js</span>
+                <span>HTML5</span>
+                <span>CSS3</span>
+                <span>Vanilla JS</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Loading screen -->
+    <div id="loader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <p>Загрузка 3D-сцены...</p>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
